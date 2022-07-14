@@ -7,6 +7,13 @@
     <title>홈 화면</title>
   </head>
   <body>
+    <form action="{% url 'posts:home' %}">
+      <input
+        type="search"
+        name="query"
+        placeholder="동네 이름으로 검색해보세요"
+      />
+    </form>
     {% for post in posts %}
     <article>
       <h1>{{post.title}}</h1>

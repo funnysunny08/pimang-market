@@ -13,12 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from unicodedata import name
 from django.urls import path
 from django.urls import path, include
 from . import views
 
-# app_name = "posts" 엥? 이게 왜 여깄지?
+app_name = 'posts'
+
 urlpatterns = [
     path('', views.home, name="home"), # posts/ --> views.py에 만듦
     path('create', views.create, name="create"),
+    path('post/<int:id>', views.detail, name="detail"),
+    path('update/<int:id>', views.update, name="update"),
+    path('delete/<int:id>', views.delete, name="delete")
 ]

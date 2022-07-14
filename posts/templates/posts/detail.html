@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상세화면</title>
+  </head>
+  <body>
+    <article>
+      <h2>제목 : {{ post.title }}</h2>
+      <p>작성자: {{ post.user }} 지역: {{post.region}}</p>
+      <p>{{post.price}} 원</p>
+      <div>{{post.content}}</div>
+    </article>
+
+    <div>업데이트 : <a href="{% url 'posts:update' post.id %}">update</a></div>
+    <div>삭제 : <a href="{% url 'posts:delete' post.id %}">delete</a></div>
+
+    <!-- <form action="/delete/{{post.id}}" method="post">
+      {% csrf_token %}
+      <button>삭제</button>
+    </form> -->
+
+    <div>홈 화면으로 가기: <a href="{% url 'posts:home' %}">Home</a></div>
+  </body>
+</html>
