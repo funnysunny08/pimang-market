@@ -17,7 +17,8 @@ from django.urls import path
 from django.urls import path, include
 from . import views
 
-app_name = "posts"
+# app_name = "posts" 엥? 이게 왜 여깄지?
 urlpatterns = [
-    path('', views.home, name="home") # posts/ --> views.py에 만듦
+    path('', views.home, name="home"), # posts/ --> views.py에 만듦
+    path('create', views.create, name="create"),
 ]

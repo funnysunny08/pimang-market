@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>홈 화면</title>
+  </head>
+  <body>
+    {% for post in posts %}
+    <article>
+      <h1>{{post.title}}</h1>
+      <p>{{post.region}} {{post.user}}</p>
+      <p>{{post.price}} 원</p>
+      <p>{{post.content}}</p>
+    </article>
+    {% endfor %}
+
+    <a href="/create">생성하기</a>
+  </body>
+</html>
