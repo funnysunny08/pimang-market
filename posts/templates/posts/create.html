@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% load static %}
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>게시글 올리기</title>
+    <link rel="stylesheet" href="{% static 'css/create.css' %}" />
   </head>
   <body>
-    <form action="/create" method="post">
+    <form action="/create" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <h2>
         <input type="text" name="title" placeholder="제목" />
       </h2>
+      <p>
+        <input type="file" name="photo" />
+      </p>
       <p>
         <input type="text" name="user" placeholder="유저" />
         <input type="text" name="region" placeholder="지역" />

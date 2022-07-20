@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html lang="ko">
+  {% load static %}
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>홈 화면</title>
+    <!-- <link rel="stylesheet" href="static/css/home.css"> -->
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
   </head>
   <body>
     <form action="{% url 'posts:home' %}">
-      <input
-        type="search"
-        name="query"
-        placeholder="동네 이름으로 검색해보세요"
-      />
+      <input type="search" name="min_price" placeholder="최소 가격" />
+      <input type="search" name="max_price" placeholder="최대 가격" />
+      <input type="submit" value="검색" />
     </form>
     {% for post in posts %}
     <article>
-      <h1>{{post.title}}</h1>
-      <p>{{post.region}} {{post.user}}</p>
-      <p>{{post.price}} 원</p>
-      <p>{{post.content}}</p>
+      {% if post.photo %}
+      <p>
+        <img src="{{post.photo.url}}" />
+      </p>
+      {% endif %}
+      <div>
+        <a href="{% url 'posts:detail' post.id %}"> {{post.title}} </a>
+        <p>{{post.region}} {{post.user.name}}</p>
+        <p>{{post.price}} 원</p>
+        <p>{{post.content}}</p>
+      </div>
     </article>
     {% endfor %}
 
-    <a href="/create">생성하기</a>
+    <a href="{% url 'posts:create' %}">
+      <!-- <img src="static/image/plus.png" /> -->
+      <img src="{% static 'image/plus.png' %}" />
+    </a>
   </body>
 </html>
